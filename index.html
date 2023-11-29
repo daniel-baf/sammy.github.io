@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <title>HBD Sammy</title>
+  </head>
+  <body>
+    <!-- Página de inicio (Landing Page) -->
+    <div id="landingPage" class="container text-center mt-5">
+      <h1>Feliz cumpleaños, Sammy5658</h1>
+      <p class="sweet-message">
+        ¡Hola mi <span class="important">amor</span>! 🎉 Hoy es tu
+        <span class="important">cumpleaños</span>, y quería dedicarte unas
+        palabras especiales. Sé que aprecias los detalles, así que decidí
+        expresarlo de una manera diferente, ¡con esta página web!
+      </p>
+
+      <p>
+        Mi intención es recordarte lo
+        <span class="important">importante</span> que eres para mí. Si hubo
+        momentos de silencio durante nuestra llamada, no fue por falta de amor o
+        palabras, sino porque me preocupaba pensar que pudiera lastimarte. Me
+        afecta pensar que lastimo a las personas que quiero, y lo que menos
+        quiero es causarte dolor.
+      </p>
+
+      <p>
+        Ya te he dado un regalo, pero además, he preparado algunos
+        <span class="birthday-gift">mini juegos</span> para entretenerte.
+        ¡Cuando llegues al final, quiero saberlo! No quiero que hagas trampa
+        inspeccionando el código, confío en que serás honesta. No estoy
+        levantando un servidor para ocultar las respuestas, así que, cuando
+        estés lista, presiona el botón "Iniciar". ¡Muacks!
+      </p>
+      <img
+        src="src/img/landing_image.jpg"
+        alt="Imagen de inicio"
+        class="img-fluid mb-4"
+      />
+      <button class="btn btn-warning" onclick="iniciarEscapeRoom()">
+        Iniciar
+      </button>
+    </div>
+
+    <!-- Fases del Escape Room -->
+    <div
+      id="escapeRoom"
+      class="container text-center mt-5"
+      style="display: none"
+    >
+      <!-- Hidden error message div -->
+      <div
+        id="errorMensaje"
+        class="alert alert-danger mt-3"
+        style="display: none"
+      ></div>
+      <!-- FASES -->
+      <div class="container text-center mt-5">
+        <div id="fase1">
+          <h1>Crucigrama</h1>
+          <p>
+            Tengo sueño, y buscar un api para renderizar un crucigrama lo veo
+            complica'o, hay que descargarlo :p
+          </p>
+          <a
+            href="/public/docs/fase1.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button class="btn btn-info mt-3 mb-4">Descargar crucigrama</button>
+          </a>
+          <div id="pistas">
+            <div class="hints-container">
+              <h2>Horizontales</h2>
+              <ul>
+                <li>1. Nombre de un baboso</li>
+                <li>2. Nombre de una persona que te estresa</li>
+                <li>3. Una ridícula de 3 sonrisas lindas</li>
+                <li>4. Té aromático originario de la India</li>
+                <li>
+                  5. Si fuera una persona, sería rosa, de pecas y con el pelo
+                  pintado
+                </li>
+                <!-- Add more horizontal hints as needed -->
+              </ul>
+            </div>
+
+            <div class="hints-container">
+              <h2>Verticales</h2>
+              <ul>
+                <li>
+                  1. Fibra suave, a menudo cara, que se puede encontrar como
+                  nombre de algunos lácteos
+                </li>
+                <li>
+                  2. Fecha especial en septiembre, en la que por primera vez me
+                  abrí contigo y te prometí hacerlo más
+                </li>
+                <li>
+                  3. Gigante prehistórico, antes era temido, ahora entra en la
+                  palma de nuestra mano
+                </li>
+                <li>
+                  4. Es un pan / emparedado que te gusta, y en su nombre lleva
+                  una pieza de ajedrez
+                </li>
+                <li>
+                  5. Me gusta llamarte de esa manera, no sé si lo sepas, pero es
+                  mi sobrenombre favorito
+                </li>
+                <!-- Add more vertical hints as needed -->
+              </ul>
+            </div>
+          </div>
+
+          <p>Introduce la contraseña:</p>
+          <input
+            type="password"
+            id="passwordInput"
+            class="form-control"
+            onkeydown="verificarEnter(event)"
+          />
+          <button class="btn btn-warning mt-3" onclick="verificarFase1()">
+            Continuar
+          </button>
+        </div>
+
+        <div id="fase2" style="display: none">
+          <h1>¿Sudoku?</h1>
+          <p>
+            Ahora, como me di cuenta que te gustan los sudokus, a cada momento
+            te veo resolviendo uno, pos te toca resolver uno, espeeeero que
+            valore que yo hice todo esto, asi que minimo un mi besito, preciosa.
+            <span class="highlight1">Igual que en la anterior,</span> hay
+            <span class="highlight2">3 celdas en otro color,</span> con esa
+            celda formarás una fecha, y esa es la contraseña, la fecha que debes
+            seleccionar para pasar a la fase 3.
+          </p>
+
+          <p>
+            En esa fecha, para mí, es una importante, fué la primera vez que me
+            sinceré y te conté cosas mías, te quiero.
+            <span class="highlight3">(Fin del mensaje)</span>
+          </p>
+
+          <a
+            href="/public/docs/fase2.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button class="btn btn-info mt-3 mb-4">Descargar Sudoku</button>
+          </a>
+
+          <p>Introduce la contraseña para la fase 2:</p>
+          <input
+            type="date"
+            id="passwordInput2"
+            class="form-control"
+            onkeydown="verificarEnter(event)"
+          />
+          <button class="btn btn-warning mt-3" onclick="verificarFase2()">
+            Continuar
+          </button>
+        </div>
+
+        <div id="fase3" style="display: none">
+          <h1>Criptograma</h1>
+          <p>
+            Me gusta mucho este tema, la idea de hacer un criptograma, y como
+            usan la matematica para que se oculten mensajes, una forma muy
+            simple de encriptar algo es cambiando letras, por ejemplo, decir que
+            la a es una x, entonces HOLA seria HOLX, obviemante esto no es algo
+            eficiente, pero ya es una forma de encriptar.
+          </p>
+          <p>
+            De cualquier manera, haremos un juego asi, si adivinas la
+            contraseña, te woa dar una clave SHA256 para que obtengas un texto,
+            a un documento
+          </p>
+          <p>FRASE: Pwlirsrqir</p>
+          <p>CONDICIONAL: w = ?, r = u, q = l, i = i, s = ?</p>
+          <p>Te toca adivinar las otras 2 letras para terminar, muacks</p>
+          <input
+            type="password"
+            id="passwordInput3"
+            class="form-control"
+            onkeydown="verificarEnter(event)"
+          />
+          <p>Una vez tengas la clave, ingresala aca abajo</p>
+          <button class="btn btn-warning mt-3" onclick="verificarFase3()">
+            Continuar
+          </button>
+        </div>
+
+        <div id="final" style="display: none">
+          <h1>¡Uy!, si llegaste aca, significa que tas loca</h1>
+          <p>O sea que bonito que hayas terminado con mis mensadas jajaja, pero yo no se si lo hubiera temrinado, en fin, te quiero decir que te quiero</p>
+          <p>Ahora puedes leer el mensaje final:</p>
+          <div id="mensajeFinal" class="alert alert-success"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="src/js/script.js"></script>
+  </body>
+</html>
