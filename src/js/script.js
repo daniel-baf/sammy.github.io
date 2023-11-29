@@ -1,6 +1,12 @@
 // script.js
 let active_event = 0;
-let messages_pool = ["Estas bobita mi amor, ese valor no es correcto", "Te quiero Sam, pero tas mal", "Me woa ofender porque pusiste algo malo"]
+let messages_pool = [
+    "Estas bobita mi amor, ese valor no es correcto", 
+    "Te quiero Sam, pero tas mal", 
+    "Me woa ofender porque pusiste algo malo",
+    "Cóooooomoooo, de verdad pusiste eso, potente",
+    "La de contestar bien te la sabes?"
+]
 
 
 // Función para ocultar la página de inicio y mostrar el escape room al hacer clic en "Iniciar"
@@ -46,13 +52,13 @@ function verificarFase3() {
         active_event = 4;
         mostrarMensajeFinal();
     } else {
-        alert("Contraseña incorrecta. Inténtalo de nuevo.");
+        displayError();
     }
 }
 
 function mostrarMensajeFinal() {
     // Puedes personalizar el mensaje final aquí
-    document.getElementById("mensajeFinal").innerHTML = "¡Enhorabuena! Has completado todas las fases. Aquí está tu mensaje final.";
+    document.getElementById("mensajeFinal").innerHTML = "¡TE QUIEROOOOR! Mi niña hermosa.";
 }
 
 
