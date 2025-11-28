@@ -10,40 +10,40 @@
          * Redirects all routes to index.html to support SPA routing
          * 
          * @author: debf-ni
-         * @version: 1.0.1
+         * @version: 1.0.4
          */
         (function() {
-            // Detect base path from current location
+            // Get current pathname
             const pathname = window.location.pathname;
-            let basePath = '/';
             
-            // Check if we're in a GitHub Pages subdirectory
-            if (pathname.includes('/sammy.github.io/')) {
-                basePath = '/sammy.github.io/';
+            // Prevent infinite redirects
+            if (pathname.includes('/index.html')) {
+                return;
             }
             
-            // Extract the path after the base
-            let path = pathname;
-            if (pathname.startsWith(basePath)) {
-                path = pathname.slice(basePath.length - 1);
+            // Detect base path
+            const basePath = pathname.includes('/sammy.github.io/') ? '/sammy.github.io/' : '/';
+            
+            // Extract the path we want to preserve
+            let targetPath = pathname;
+            if (targetPath.startsWith(basePath)) {
+                targetPath = targetPath.slice(basePath.length);
             }
             
-            // Remove '404.html' from path if present
-            path = path.replace(/\/404\.html$/, '');
+            // Remove 404.html from path
+            targetPath = targetPath.replace(/^404\.html\/?/, '').replace(/\/404\.html$/, '');
             
-            // Get query string and hash
+            // Get query and hash
             const search = window.location.search;
             const hash = window.location.hash;
             
-            // Build redirect URL
-            let redirectUrl = basePath + 'index.html';
-            if (path && path !== '/' && path !== '/index.html') {
-                redirectUrl += path;
+            // Store the target path in sessionStorage so index.html can use it
+            if (targetPath && targetPath !== 'index.html' && targetPath !== '') {
+                sessionStorage.setItem('redirectPath', basePath + targetPath + search + hash);
             }
-            redirectUrl += search + hash;
             
-            // Redirect
-            window.location.replace(redirectUrl);
+            // Simply redirect to index.html - no path after it!
+            window.location.replace(basePath + 'index.html' + search + hash);
         })();
     </script>
 </head>
