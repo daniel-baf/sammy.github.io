@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sammy.github.io</title>
+    <script>
+        /**
+         * GitHub Pages 404.html redirect script
+         * Redirects all routes to index.html to support SPA routing
+         * 
+         * @author: debf-ni
+         * @version: 1.0.1
+         */
+        (function() {
+            // Detect base path from current location
+            const pathname = window.location.pathname;
+            let basePath = '/';
+            
+            // Check if we're in a GitHub Pages subdirectory
+            if (pathname.includes('/sammy.github.io/')) {
+                basePath = '/sammy.github.io/';
+            }
+            
+            // Extract the path after the base
+            let path = pathname;
+            if (pathname.startsWith(basePath)) {
+                path = pathname.slice(basePath.length - 1);
+            }
+            
+            // Remove '404.html' from path if present
+            path = path.replace(/\/404\.html$/, '');
+            
+            // Get query string and hash
+            const search = window.location.search;
+            const hash = window.location.hash;
+            
+            // Build redirect URL
+            let redirectUrl = basePath + 'index.html';
+            if (path && path !== '/' && path !== '/index.html') {
+                redirectUrl += path;
+            }
+            redirectUrl += search + hash;
+            
+            // Redirect
+            window.location.replace(redirectUrl);
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirigiendo...</p>
+</body>
+</html>
+
