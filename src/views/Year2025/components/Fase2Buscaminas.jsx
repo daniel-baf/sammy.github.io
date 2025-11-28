@@ -165,15 +165,6 @@ function Fase2Buscaminas({ onComplete }) {
                     >
                         Reiniciar
                     </Button>
-                    <Button
-                        variant="text"
-                        color="error"
-                        size="small"
-                        onClick={onComplete}
-                        sx={{ opacity: 0.5 }}
-                    >
-                        Saltar (Debug)
-                    </Button>
                 </Box>
 
                 <Box sx={{
